@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Inventario extends Model
+class InventarioMultimedia extends Model
 {
-    protected $table = 'inventarios';
-    protected $fillable = ['stock', 'existencia', 'estado'];
+    protected $table = 'inventario_multimedia';
+    protected $fillable = ['inventario_id', 'multimedia_id', 'descripcion', 'estado'];
     protected $hidden = ['created_at', 'updated_at'];
 
     public function multimedia(){

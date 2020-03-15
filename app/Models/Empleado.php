@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Empleado extends Model
 {
     protected $table = 'empleados';
-    protected $fillable = ['nombre_empleado', 'apellido_empleado', 'cargo_empleado', 'dependencia_id'];
+    protected $fillable = ['nombres', 'apellidos', 'estado', 'dependencia_id', 'tipo_id'];
     protected $hidden = ['created_at', 'updated_at'];
 
     public function dependencia(){

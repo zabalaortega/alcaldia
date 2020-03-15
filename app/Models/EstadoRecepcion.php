@@ -6,8 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class EstadoRecepcion extends Model
 {
-    protected $table = 'estadorecepcion';
-    protected $fillable = ['estado_id', 'recepcion_id'];
+    protected $table = 'estado_recepcion';
+    protected $fillable = ['estado_id', 'recepcion_id', 'descripcion', 'estado'];
     protected $hidden = ['created_at', 'updated_at'];
 
     public function estado(){

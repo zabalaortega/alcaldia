@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Prestamo extends Model
 {
     protected $table = 'prestamos';
-    protected $fillable = ['fecha', 'motivo', 'funcionario_id', 'inventario_id'];
+    protected $fillable = ['empleado_id', 'multimedia_id', 'descripcion', 'estado' ];
     protected $hidden = ['created_at', 'updated_at'];
 
     public function empleado(){
