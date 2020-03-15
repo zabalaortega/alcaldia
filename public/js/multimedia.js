@@ -21,20 +21,16 @@ const btnUpdate = () => {
 }
 
 const showEdit = () => {
-    $('#EditFuncionario').on('show.bs.modal', function (event) {
+    $('#EditMultimedia').on('show.bs.modal', function (event) {
         let button = $(event.relatedTarget)
         let id = button.data('id')
-        let dependencia_id = button.data('dependencia_id')
-        let nombre = button.data('nombre_funcionario')
-        let apellido = button.data('apellido_funcionario')
-        let cargo = button.data('cargo_funcionario')
+        let nombre = button.data('nombre')
+        let cantidad = button.data('cantidad')
         let modal = $(this)
 
-        modal.find('.modal-body #id_funcionario').val(id);
-        modal.find('.modal-body #dependencia_id').val(dependencia_id);
-        modal.find('.modal-body #nombre_funcionario').val(nombre);
-        modal.find('.modal-body #apellido_funcionario').val(apellido);
-        modal.find('.modal-body #cargo_funcionario').val(cargo);
+        modal.find('.modal-body #id_multimedia').val(id);
+        modal.find('.modal-body #nombre').val(nombre);
+        modal.find('.modal-body #cantidad').val(cantidad);
 
     });
 }
@@ -76,7 +72,7 @@ const update = () => {
 
             if (data.success) {
                 success(data.success);
-                $('#EditFuncionario').modal('hide');
+                $('#EditMultimedia').modal('hide');
                 updateTable();
             } else {
                 warning(data.warning);
@@ -93,12 +89,3 @@ const update = () => {
     });
 
 }
-
-
-
-
-
-
-
-
-

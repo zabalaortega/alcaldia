@@ -21,18 +21,16 @@ const btnUpdate = () => {
 }
 
 const showEdit = () => {
-    $('#EditEquipo_computos').on('show.bs.modal', function (event) {
+    $('#EditEquipoempleado').on('show.bs.modal', function (event) {
         let button = $(event.relatedTarget)
         let id = button.data('id')
-        let nombre = button.data('nombre')
-        let marca = button.data('marca')
-        let serial = button.data('serial')
+        let empleado = button.data('empleado_id')
+        let equipo = button.data('equipo_id')
         let modal = $(this)
 
-        modal.find('.modal-body #id_equipo_computo').val(id);
-        modal.find('.modal-body #nombre').val(nombre);
-        modal.find('.modal-body #marca').val(marca);
-        modal.find('.modal-body #serial').val(serial);
+        modal.find('.modal-body #id_equipoempleado').val(id);
+        modal.find('.modal-body #empleado_id').val(empleado);
+        modal.find('.modal-body #equipo_id').val(equipo);
 
     });
 }
@@ -74,7 +72,7 @@ const update = () => {
 
             if (data.success) {
                 success(data.success);
-                $('#EditEquipo_computos').modal('hide');
+                $('#EditEquipoempleado').modal('hide');
                 updateTable();
             } else {
                 warning(data.warning);

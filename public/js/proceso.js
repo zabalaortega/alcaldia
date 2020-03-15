@@ -21,14 +21,14 @@ const btnUpdate = () => {
 }
 
 const showEdit = () => {
-    $('#EditEquipo_multimedias').on('show.bs.modal', function (event) {
+    $('#EditProceso').on('show.bs.modal', function (event) {
         let button = $(event.relatedTarget)
         let id = button.data('id')
-        let nombre = button.data('nombre')
+        let nombre = button.data('nombre_proceso')
         let modal = $(this)
 
-        modal.find('.modal-body #id_equipo_multimedia').val(id);
-        modal.find('.modal-body #nombre').val(nombre);
+        modal.find('.modal-body #id_proceso').val(id);
+        modal.find('.modal-body #nombre_proceso').val(nombre);
 
     });
 }
@@ -70,7 +70,7 @@ const update = () => {
 
             if (data.success) {
                 success(data.success);
-                $('#EditEquipo_multimedias').modal('hide');
+                $('#EditProceso').modal('hide');
                 updateTable();
             } else {
                 warning(data.warning);
@@ -87,12 +87,3 @@ const update = () => {
     });
 
 }
-
-
-
-
-
-
-
-
-
