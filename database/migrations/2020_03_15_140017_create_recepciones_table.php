@@ -14,8 +14,8 @@ class CreateRecepcionesTable extends Migration
 
             $table->bigInteger('equipo_id')->unsigned();
 
-            $table->date('fecha_entrada');
-            $table->date('fecha_salida')->nullable();
+            $table->dateTime('fecha_entrada');
+            $table->dateTime('fecha_salida')->nullable();
             $table->text('descripcion')->nullable();
 
             $table->foreign('equipo_id')

@@ -2,30 +2,30 @@
     <thead>
         <tr>
             <th>#</th>
-            <th>Nombre</th>
-            <th>Marca</th>
-            <th>Serial</th>
+            <th>Stock</th>
+            <th>Existencia</th>
+            <th>Estado</th>
             <th>Accion</th>
         </tr>
     </thead>
     <tfoot>
         <tr>
         <th>#</th>
-            <th>Nombre</th>
-            <th>Marca</th>
-            <th>Serial</th>
+            <th>Stock</th>
+            <th>Existencia</th>
+            <th>Estado</th>
             <th>Accion</th>
         </tr>
     </tfoot>
     <tbody>
-        @foreach($equipo_computos as $equipo_computo)
+        @foreach($inventarios as $inventario)
         <tr>
             <td>{{$loop->iteration}}</td>
-            <td>{{$equipo_computo->nombre}}</td>
-            <td>{{$equipo_computo->marca}}</td>
-            <td>{{$equipo_computo->serial}}</td>
+            <td>{{$inventario->stock}}</td>
+            <td>{{$inventario->existencia}}</td>
+            <td>{{$inventario->estado}}</td>
             <td class="text-center">
-				<a href='#EditEquipo_computos' data-toggle='modal' class='btn bg-indigo waves-effect btn-sm' data-id="{{$equipo_computo->id}}" data-nombre="{{$equipo_computo->nombre}}" data-marca="{{$equipo_computo->marca}}" data-serial="{{$equipo_computo->serial}}">
+				<a href='#EditInventario' data-toggle='modal' class='btn bg-indigo waves-effect btn-sm' data-id="{{$inventario->id}}" data-stock="{{$inventario->stock}}" data-existencia="{{$inventario->existencia}}" data-estado="{{$inventario->estado}}">
                     <i class="material-icons" data-toggle="tooltip" data-placement="top" data-original-title="Editar">create</i>
                 </a>
             </td>

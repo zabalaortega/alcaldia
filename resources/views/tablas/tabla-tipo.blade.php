@@ -2,24 +2,27 @@
     <thead>
         <tr>
             <th>#</th>
-            <th>Nombre</th>
+            <th>Nombre Tipo</th>
+            <th>Descripcion</th>
             <th>Accion</th>
         </tr>
     </thead>
     <tfoot>
         <tr>
         <th>#</th>
-            <th>Nombre</th>
+            <th>Nombre Tipo</th>
+            <th>Descripcion</th>
             <th>Accion</th>
         </tr>
     </tfoot>
     <tbody>
-        @foreach($equipo_multimedias as $equipo_multimedia)
+        @foreach($tipos as $tipo)
         <tr>
             <td>{{$loop->iteration}}</td>
-            <td>{{$equipo_multimedia->nombre}}</td>
+            <td>{{$tipo->nombre_tipo}}</td>
+            <td>{{$tipo->descripcion}}</td>
             <td class="text-center">
-				<a href='#EditEquipo_multimedias' data-toggle='modal' class='btn bg-indigo waves-effect btn-sm' data-id="{{$equipo_multimedia->id}}" data-nombre="{{$equipo_multimedia->nombre}}">
+				<a href='#EditTipo' data-toggle='modal' class='btn bg-indigo waves-effect btn-sm' data-id="{{$tipo->id}}" data-nombre="{{$tipo->nombre_tipo}}" data-descripcion="{{$tipo->descripcion}}">
                     <i class="material-icons" data-toggle="tooltip" data-placement="top" data-original-title="Editar">create</i>
                 </a>
             </td>

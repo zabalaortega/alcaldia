@@ -7,14 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Inventario extends Model
 {
     protected $table = 'inventarios';
+
     protected $fillable = ['stock', 'existencia', 'estado'];
+
     protected $hidden = ['created_at', 'updated_at'];
 
-    public function multimedia(){
-    	return $this->belongsTo('App\Models\Mutimedia');
+    public function multimedias()
+    {
+        return $this->belongsToMany('App\Models\Multimedia');
     }
 
-    public function prestamos(){
-    	return $this->hasMany('App\Models\Prestamo');
-    }
 }
