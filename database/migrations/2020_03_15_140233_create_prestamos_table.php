@@ -15,6 +15,7 @@ class CreatePrestamosTable extends Migration
             $table->bigInteger('empleado_id')->unsigned();
             $table->bigInteger('multimedia_id')->unsigned();
             $table->text('descripcion')->nullable();
+            $table->dateTime('fecha_prestamo');
 
             $table->integer('estado');
 

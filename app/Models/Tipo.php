@@ -7,11 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Tipo extends Model
 {
     protected $table = 'tipos';
-    protected $fillable = ['nombre', 'descripcion', 'empleado_id'];
+
+    protected $fillable = ['nombre_tipo', 'descripcion'];
+
     protected $hidden = ['created_at', 'updated_at'];
 
-    public function empleados(){
-    	return $this->belongsTo('App\Models\Empleado');
+    public function empleados()
+    {
+        return $this->hasMany('App\Models\Empleado');
     }
 
 }

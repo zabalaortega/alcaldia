@@ -7,19 +7,32 @@ use Illuminate\Database\Eloquent\Model;
 class Empleado extends Model
 {
     protected $table = 'empleados';
-    protected $fillable = ['nombre_empleado', 'apellido_empleado', 'cargo_empleado', 'dependencia_id'];
+
+    protected $fillable = [
+        'tipo_id',
+        'dependencia_id',
+        'nombres',
+        'apellidos',
+        'estado'
+    ];
+
     protected $hidden = ['created_at', 'updated_at'];
 
-    public function dependencia(){
-    	return $this->belongsTo('App\Models\Dependencia');
+    protected $casts = ['estado' => 'boolean'];
+
+    public function dependencia()
+    {
+        return $this->belongsTo('App\Models\Dependencia');
     }
 
-    public function tipos(){
-    	return $this->hasMany('App\Models\Tipo');
+    public function tipo()
+    {
+        return $this->belongsTo('App\Models\Tipo');
     }
 
-    public function equipos(){
-    	return $this->belongsToMany('App\Models\Equipo');
+    public function equipos()
+    {
+        return $this->belongsToMany('App\Models\Equipo');
     }
 
 }
