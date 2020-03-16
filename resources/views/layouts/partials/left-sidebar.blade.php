@@ -47,18 +47,6 @@
                         <a href="{{route('dependencias.index')}}">
                             <span>Modulo Dependencia</span>
                         </a>
-                        <a href="{{route('equipo_multimedias.index')}}">
-                            <span>Modulo Herramientas Multimedias</span>
-                        </a>
-                        <a href="{{route('equipo_computos.index')}}">
-                            <span>Modulo Herramientas De Computo</span>
-                        </a>
-                        <a href="{{route('funcionarios.index')}}">
-                            <span>Modulo De Funcionario</span>
-                        </a>
-                        <a href="{{route('recepciones.index')}}">
-                            <span>Modulo De Recepcion</span>
-                        </a>
                     </li>
                 </ul>
             </li>
