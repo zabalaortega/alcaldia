@@ -20,14 +20,13 @@
         <tr>
             <td>{{$loop->iteration}}</td>
             <td>
-                <li>{{$empleado->nombre_completo}}</li>
-                <li>{{$empleado->tipo->nombre_tipo}}</li>
+                {{$empleado->present()->textName()}}
             </td>
             <td>{{$empleado->dependencia->nombre_dependencia}}</td>
             <td class="text-center">
                 <a href='#EditEmpleado' data-toggle='modal' class='btn bg-indigo waves-effect btn-sm'
-                    data-id="{{$empleado->id}}" data-tipo="tipo_id" data-nombre="{{$empleado->nombres}}"
-                    data-apellido="{{$empleado->apellidos}}" data-estado="{{$empleado->estado}}">
+                    data-id="{{$empleado->id}}" data-tipo="{{$empleado->tipo_id}}" data-nombre="{{$empleado->nombres}}"
+                    data-apellido="{{$empleado->apellidos}}" data-dependencia="{{$empleado->dependencia_id}}">
                     <i class="material-icons" data-toggle="tooltip" data-placement="top"
                         data-original-title="Editar">create</i>
                 </a>

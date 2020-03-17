@@ -24,18 +24,19 @@ const showEdit = () => {
     $('#EditEmpleado').on('show.bs.modal', function (event) {
         let button = $(event.relatedTarget)
         let id = button.data('id')
-        let nombre = button.data('nombre_funcionario')
-        let apellido = button.data('apellido_funcionario')
-        let cargo = button.data('cargo_funcionario')
-        let dependencia = button.data('dependencia_id')
+        let nombre = button.data('nombre')
+        let apellido = button.data('apellido')
+        let tipo = button.data('tipo')
+        let dependencia = button.data('dependencia')
         let modal = $(this)
 
-        modal.find('.modal-body #id_funcionario').val(id);
-        modal.find('.modal-body #nombre_funcionario').val(nombre);
-        modal.find('.modal-body #apellido_funcionario').val(apellido);
-        modal.find('.modal-body #cargo_funcionario').val(cargo);
-        modal.find('.modal-body #dependencia_id').val(dependencia);
+        clearSelects('#tipo_id', tipo);
+        clearSelects('#dependencia_id', dependencia);
 
+        modal.find('.modal-body #id_empleado').val(id);
+        modal.find('.modal-body #nombres').val(nombre);
+        modal.find('.modal-body #apellidos').val(apellido);
+       
     });
 }
 
@@ -67,8 +68,8 @@ const save = () => {
 
 }
 
-const clearSelects = (select) => {
-    $(select).val("");
+const clearSelects = (select, value = "") => {
+    $(select).val(value);
     $(select).selectpicker("refresh");
     $(select).selectpicker("render");
 

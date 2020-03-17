@@ -35,12 +35,33 @@
                 </a>
             </li>
 
-            <li class="header">Gestion Dependencias</li>
+            <li class="header">Gestion Prestamos - (Entradas)</li>
 
             <li>
                 <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">account_circle</i>
-                    <span>Dependencias</span>
+                    <i class="material-icons">input</i>
+                    <span>Prestamos - Entradas</span>
+                </a>
+                <ul class="ml-menu">
+                    <li>
+                        <a href="javascript:void(0)">
+                            <span>Modulo Prestamos</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="javascript:void(0)">
+                            <span>Modulo Entradas</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+       
+            <li class="header">Gestion Parametros</li>
+
+            <li>
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">settings</i>
+                    <span>Parametros</span>
                 </a>
                 <ul class="ml-menu">
                     <li>
@@ -48,16 +69,6 @@
                             <span>Modulo Dependencia</span>
                         </a>
                     </li>
-                </ul>
-            </li>
-            <li class="header">Gestion Empleado</li>
-
-            <li>
-                <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">account_circle</i>
-                    <span>Empleados</span>
-                </a>
-                <ul class="ml-menu">
                     <li>
                         <a href="{{route('empleados.index')}}">
                             <span>Modulo Empleado</span>
@@ -65,7 +76,7 @@
                     </li>
                 </ul>
             </li>
-       
+            
 
         </ul>
     </div>
@@ -73,7 +84,7 @@
     <!-- Footer -->
     <div class="legal">
         <div class="copyright">
-            &copy; 2019 <a href="javascript:void(0);">Plataforma - Alcaldia</a>.
+            &copy; 2020 <a href="javascript:void(0);">Plataforma - Alcaldia</a>.
         </div>
         <div class="version">
             <b>Version: </b> 1.0.0
