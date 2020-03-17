@@ -3,7 +3,7 @@ $(function () {
     btnSave();
     showEdit();
     btnUpdate();
-   
+
 });
 
 const btnSave = () => {
@@ -35,7 +35,7 @@ const showEdit = () => {
         modal.find('.modal-body #apellido_funcionario').val(apellido);
         modal.find('.modal-body #cargo_funcionario').val(cargo);
         modal.find('.modal-body #dependencia_id').val(dependencia);
-        
+
     });
 }
 
@@ -50,6 +50,8 @@ const save = () => {
             if (data.success) {
                 success(data.success);
                 $('#form_create')[0].reset();
+                clearSelects('select[name="tipo_id"]');
+                clearSelects('select[name="dependencia_id"]');
                 updateTable();
             } else {
                 warning(data.warning);
@@ -62,6 +64,13 @@ const save = () => {
             }
         }
     });
+
+}
+
+const clearSelects = (select) => {
+    $(select).val("");
+    $(select).selectpicker("refresh");
+    $(select).selectpicker("render");
 
 }
 

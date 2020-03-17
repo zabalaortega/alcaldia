@@ -16,11 +16,12 @@
 
                                     @csrf
 
-                                        <div class="col-md-12">
-                                            <label for="tipo_id" class="col-red">Tipo Empleado</label>
+                                        <div class="col-md-6">
+                                            <label for="tipo_id">Tipo Empleado</label>
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <select id="tipo_id" name="tipo_id" class="form-control">
+                                                    <select name="tipo_id" class="form-control">
+                                                     <option value="">-- Escoja una opcion --</option>   
                                                      @foreach($tipos as $tipo)
                                                      <option value="{{$tipo->id}}">{{$tipo->nombre_tipo}}</option>
                                                      @endforeach
@@ -29,11 +30,12 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-12">
-                                            <label for="dependencia_id" class="col-red">Nombre Dependencia</label>
+                                        <div class="col-md-6">
+                                            <label for="dependencia_id">Dependencia</label>
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <select id="dependencia_id" name="dependencia_id" class="form-control">
+                                                    <select name="dependencia_id" class="form-control">
+                                                     <option value="">-- Escoja una opcion --</option>   
                                                      @foreach($dependencias as $dependencia)
                                                      <option value="{{$dependencia->id}}">{{$dependencia->nombre_dependencia}}</option>
                                                      @endforeach
@@ -42,7 +44,7 @@
                                             </div>
                                         </div>
                                         
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <label for="nombres" class="col-red">Nombre Empleado:</label>
                                             <div class="form-group">
                                                 <div class="form-line">
@@ -51,25 +53,16 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <label for="apellidos">Apellido Empleado:</label>
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input class="form-control" name="apellidos"></input>
+                                                    <input class="form-control" name="apellidos">
                                                 </div>
                                             </div>        
                                         </div>
 
-                                        <div class="col-md-12">
-                                            <label for="estado">Estado:</label>
-                                            <div class="form-group">
-                                                <div class="form-line">
-                                                    <input class="form-control" name="estado"></input>
-                                                </div>
-                                            </div>        
-                                        </div>
-
-
+                                        
                                     <button type="button" id="btnsave" class="btn bg-teal waves-effect">
                                         <i class="material-icons">save</i>
                                         <span>GUARDAR</span>

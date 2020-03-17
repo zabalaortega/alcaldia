@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Presenters\EmpleadoPresenter;
 use Illuminate\Database\Eloquent\Model;
 
 class Empleado extends Model
@@ -13,12 +14,14 @@ class Empleado extends Model
         'dependencia_id',
         'nombres',
         'apellidos',
-        'estado'
+        'estado',
     ];
 
     protected $hidden = ['created_at', 'updated_at'];
 
     protected $casts = ['estado' => 'boolean'];
+
+    protected $appends = ['nombre_completo'];
 
     public function dependencia()
     {
@@ -33,6 +36,26 @@ class Empleado extends Model
     public function equipos()
     {
         return $this->belongsToMany('App\Models\Equipo');
+    }
+
+    public function setNombresAttribute($value)
+    {
+        $this->attributes['nombres'] = ucwords($value);
+    }
+
+    public function setApellidosAttribute($value)
+    {
+        $this->attributes['apellidos'] = ucwords($value);
+    }
+
+    public function getNombreCompletoAttribute()
+    {
+        return "{$this->nombres} {$this->apellidos}";
+    }
+
+    public function present()
+    {
+        return new EmpleadoPresenter($this);
     }
 
 }

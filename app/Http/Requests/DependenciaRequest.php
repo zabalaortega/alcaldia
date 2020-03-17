@@ -16,7 +16,7 @@ class DependenciaRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre_dependencia' => 'required|min:3',
+            'nombre_dependencia' => 'required|min:3|unique:dependencias,nombre_dependencia,'.$this->id_dependencia,
             'descripcion' => 'nullable|min:3'
         ];
     }

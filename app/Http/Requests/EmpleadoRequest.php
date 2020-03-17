@@ -15,18 +15,20 @@ class EmpleadoRequest extends FormRequest
     public function rules()
     {
         return [
+            'tipo_id' => 'required|exists:tipos,id',
+            'dependencia_id' => 'required|exists:dependencias,id',
             'nombres' => 'required|min:3',
             'apellidos' => 'required|min:3',
-            'estado' => 'required|min:2'
         ];
     }
 
     public function attributes()
     {
         return [
-            'nombres' => 'Nombre',
-            'apellidos' => 'Apellido',
-            'estado' => 'Estado'
+            'tipo_id' => 'Tipo Empleado',
+            'dependencia_id' => 'Dependencia',
+            'nombres' => 'Nombres',
+            'apellidos' => 'Apellidos',
         ];
     }
 }
