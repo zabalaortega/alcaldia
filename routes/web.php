@@ -15,3 +15,15 @@ Route::resource('dependencias', 'DependenciaController', ['except' => [
 Route::resource('empleados', 'EmpleadoController', ['except' => [
     'destroy', 'show', 'create', 'edit'
 ]]);
+
+Route::resource('equipos', 'EquipoController', ['except' => [
+    'destroy', 'show', 'create', 'edit'
+]]);
+
+Route::resource('inventarios', 'InventarioController', ['except' => [
+    'destroy', 'show', 'create', 'edit'
+]]);
+
+Route::resource('multimedias', 'MultimediaController', ['except' => [
+    'destroy', 'show', 'create', 'edit'
+]]);

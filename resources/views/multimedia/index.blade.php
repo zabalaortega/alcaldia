@@ -52,6 +52,6 @@
 <script src="{{asset('plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.min.js')}}"></script>
 <script src="{{asset('plugins/sweetalert/sweetalert.min.js')}}"></script>
 <script src="{{asset('js/datatable.js')}}"></script>
-<script src="{{asset('js/dependencia.js')}}"></script>
+<script src="{{asset('js/multimedia.js')}}"></script>
 
 @stop

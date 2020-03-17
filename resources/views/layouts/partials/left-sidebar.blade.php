@@ -65,6 +65,54 @@
                     </li>
                 </ul>
             </li>
+
+            <li class="header">Gestion Equipos</li>
+
+            <li>
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">account_circle</i>
+                    <span>Equipo</span>
+                </a>
+                <ul class="ml-menu">
+                    <li>
+                        <a href="{{route('equipos.index')}}">
+                            <span>Modulo Equipo</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="header">Gestion Inventario</li>
+
+            <li>
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">account_circle</i>
+                    <span>Inventario</span>
+                </a>
+                <ul class="ml-menu">
+                    <li>
+                        <a href="{{route('inventarios.index')}}">
+                            <span>Modulo Inventario</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="header">Gestion Multimedia</li>
+
+            <li>
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">account_circle</i>
+                    <span>Multimedia</span>
+                </a>
+                <ul class="ml-menu">
+                    <li>
+                        <a href="{{route('multimedias.index')}}">
+                            <span>Modulo Multimedia</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
        
 
         </ul>

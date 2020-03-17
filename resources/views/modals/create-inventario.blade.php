@@ -11,7 +11,7 @@
                             </div>
                             <div class="body">
 
-                                <form id="form_create" method="POST" action="{{ route('inventario.store') }}"
+                                <form id="form_create" method="POST" action="{{ route('inventarios.store') }}"
                                     autocomplete="off">
 
                                     @csrf

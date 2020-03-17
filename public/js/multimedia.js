@@ -24,13 +24,17 @@ const showEdit = () => {
     $('#EditMultimedia').on('show.bs.modal', function (event) {
         let button = $(event.relatedTarget)
         let id = button.data('id')
-        let nombre = button.data('nombre')
-        let cantidad = button.data('cantidad')
+        let nombre = button.data('nombre_multimedia')
+        let tipo = button.data('tipo')
+        let serial = button.data('serial')
+        let estado = button.data('estado')
         let modal = $(this)
 
-        modal.find('.modal-body #id_multimedia').val(id);
-        modal.find('.modal-body #nombre').val(nombre);
-        modal.find('.modal-body #cantidad').val(cantidad);
+        modal.find('.modal-body #id_dependencia').val(id);
+        modal.find('.modal-body #nombre_multimedia').val(nombre);
+        modal.find('.modal-body #tipo').val(tipo);
+        modal.find('.modal-body #serial').val(serial);
+        modal.find('.modal-body #estado').val(estado);
 
     });
 }

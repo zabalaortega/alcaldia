@@ -23,10 +23,10 @@
         @foreach($equipos as $equipo)
         <tr>
             <td>{{$loop->iteration}}</td>
-            <td>{{$equipo_computo->serial}}</td>
-            <td>{{$equipo_computo->marca}}</td>
-            <td>{{$equipo_computo->tipo}}</td>
-            <td>{{$equipo_computo->estado}}</td>
+            <td>{{$equipo->serial}}</td>
+            <td>{{$equipo->marca}}</td>
+            <td>{{$equipo->tipo}}</td>
+            <td>{{$equipo->estado}}</td>
             <td class="text-center">
 				<a href='#EditEquipos' data-toggle='modal' class='btn bg-indigo waves-effect btn-sm' data-id="{{$equipo->id}}" data-serial="{{$equipo->serial}}" data-marca="{{$equipo->marca}}" data-tipo="{{$equipo->tipo}}" data-estado="{{$equipo->estado}}">
                     <i class="material-icons" data-toggle="tooltip" data-placement="top" data-original-title="Editar">create</i>

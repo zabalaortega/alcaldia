@@ -36,7 +36,7 @@
 </div>
 
 
-<form id="form_hidden" style="display:none" action="{{route('dependencias.index')}}" method="GET"><input type="hidden" name="opcion" value="ok"></form>
+<form id="form_hidden" style="display:none" action="{{route('equipos.index')}}" method="GET"><input type="hidden" name="opcion" value="ok"></form>
 
 
 @include('modals.create-equipo')
