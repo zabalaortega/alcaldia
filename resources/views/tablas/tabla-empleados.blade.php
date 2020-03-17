@@ -2,7 +2,8 @@
     <thead>
         <tr>
             <th>#</th>
-            <th>Tipo_id</th>
+            <th>Tipo Funcionario</th>
+            <th>Nombre Dependencia</th>
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Estado</th>
@@ -12,8 +13,9 @@
     <tfoot>
         <tr>
         <th>#</th>
-            <th>Tipo_id</th>
-            <th>Nombres</th>
+            <th>Tipo Funcionario</th>
+            <th>Nombre Dependencia</th>
+            <th>Nombre</th>
             <th>Apellidos</th>
             <th>Estado</th>
             <th>Accion</th>
@@ -23,7 +25,8 @@
         @foreach($empleados as $empleado)
         <tr>
             <td>{{$loop->iteration}}</td>
-            <td>{{$empleado->tipo_id}}</td>
+            <td>{{$empleado->tipo->nombre_tipo}}</td>
+            <td>{{$empleado->dependencia->nombre_dependencia}}</td>
             <td>{{$empleado->nombres}}</td>
             <td>{{$empleado->apellidos}}</td>
             <td>{{$empleado->estado}}</td>

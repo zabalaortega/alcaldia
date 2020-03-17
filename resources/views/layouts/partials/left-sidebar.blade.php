@@ -50,6 +50,21 @@
                     </li>
                 </ul>
             </li>
+            <li class="header">Gestion Empleado</li>
+
+            <li>
+                <a href="javascript:void(0);" class="menu-toggle">
+                    <i class="material-icons">account_circle</i>
+                    <span>Empleados</span>
+                </a>
+                <ul class="ml-menu">
+                    <li>
+                        <a href="{{route('empleados.index')}}">
+                            <span>Modulo Empleado</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
        
 
         </ul>

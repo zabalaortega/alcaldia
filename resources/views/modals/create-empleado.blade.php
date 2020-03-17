@@ -21,8 +21,10 @@
                                             <div class="form-group">
                                                 <div class="form-line">
                                                     <select id="tipo_id" name="tipo_id" class="form-control">
-                                                     <option value=""></option>
-                                                    </select>  
+                                                     @foreach($tipos as $tipo)
+                                                     <option value="{{$tipo->id}}">{{$tipo->nombre_tipo}}</option>
+                                                     @endforeach
+                                                    </select>                                                 
                                                 </div>
                                             </div>
                                         </div>
@@ -32,7 +34,9 @@
                                             <div class="form-group">
                                                 <div class="form-line">
                                                     <select id="dependencia_id" name="dependencia_id" class="form-control">
-                                                     <option value=""></option>
+                                                     @foreach($dependencias as $dependencia)
+                                                     <option value="{{$dependencia->id}}">{{$dependencia->nombre_dependencia}}</option>
+                                                     @endforeach
                                                     </select>  
                                                 </div>
                                             </div>
