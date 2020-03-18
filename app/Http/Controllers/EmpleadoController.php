@@ -2,27 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\EmpleadoRequest;
-use App\Models\Empleado;
 use App\Models\Dependencia;
-use App\Models\Tipo;
+use App\Models\Empleado;
+use App\Repositories\DependenciaRepository;
+use App\Repositories\EmpleadoRepository;
 
 class EmpleadoController extends Controller
 {
-    public function __construct()
+    protected $repository;
+    protected $dependencia;
+
+    public function __construct(EmpleadoRepository $repository, DependenciaRepository $dependencia)
     {
         $this->middleware('auth');
+        $this->repository = $repository;
+        $this->dependencia = $dependencia;
     }
 
     public function index()
     {
-        $empleados = Empleado::all(['tipo_id', 'dependencia_id', 'nombres', 'apellidos', 'estado']);
-        $dependencias = Dependencia::all();
-        $tipos = Tipo::all();
+        $campos = ['id', 'tipo_id', 'dependencia_id', 'nombres', 'apellidos'];
+        $empleados = $this->repository->getEmpleadosWithDependencia($campos);
+
+        $dependencias = $this->dependencia->getDependencias();
+        $tipos = $this->repository->getTipos();
 
         if (request()->ajax()) {
-            $empleados = Empleado::all(['tipo_id', 'dependencia_id', 'nombres', 'apellidos', 'estado']);
+            $empleados = $this->repository->getEmpleadosWithDependencia($campos);
             return response()->view('tablas.tabla-empleados', compact('empleados'));
         }
 
@@ -31,10 +38,25 @@ class EmpleadoController extends Controller
 
     public function store(EmpleadoRequest $request)
     {
-        if (request()->ajax())
-        {
-            Empleado::create($request->all());
-            return response()->json(['success' => 'EMPLEADO CREADO CON EXITO!']);
+        if (request()->ajax()) {
+            $exito = $this->repository->saveEmpleado($request);
+            if ($exito) {
+                return response()->json(['success' => 'EMPLEADO CREADO CON EXITO!']);
+            } else {
+                return response()->json(['warning' => 'ERROR AL GUARDAR DATOS!']);
+            }
+        }
+    }
+
+    public function update(EmpleadoRequest $request, $id)
+    {
+        if (request()->ajax()) {
+            $exito = $this->repository->updateEmpleado($request);
+            if ($exito) {
+                return response()->json(['success' => 'EMPLEADO ACTUALIZADO CON EXITO!']);
+            } else {
+                return response()->json(['warning' => 'ERROR AL ACTUALIZAR DATOS!']);
+            }
         }
     }
 }

@@ -19,29 +19,35 @@
 
                                         <input type="hidden" name="id_empleado" id="id_empleado">
 
-                                        <div class="col-md-12">
-                                            <label for="tipo_id" class="col-red">Tipo Empleado</label>
+                                        <div class="col-md-6">
+                                            <label for="tipo_id">Tipo Empleado</label>
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <select id="tipo_id" name="tipo_id" class="form-control">
-                                                     <option value=""></option>
-                                                    </select>  
+                                                    <select name="tipo_id" id="tipo_id" class="form-control">
+                                                     <option value="">-- Escoja una opcion --</option>   
+                                                     @foreach($tipos as $tipo)
+                                                     <option value="{{$tipo->id}}">{{$tipo->nombre_tipo}}</option>
+                                                     @endforeach
+                                                    </select>                                                 
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="col-md-12">
-                                            <label for="dependencia_id" class="col-red">Nombre Dependencia</label>
+                                        <div class="col-md-6">
+                                            <label for="dependencia_id">Dependencia</label>
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <select id="dependencia_id" name="dependencia_id" class="form-control">
-                                                     <option value=""></option>
+                                                    <select name="dependencia_id" id="dependencia_id" class="form-control">
+                                                     <option value="">-- Escoja una opcion --</option>   
+                                                     @foreach($dependencias as $dependencia)
+                                                     <option value="{{$dependencia->id}}">{{$dependencia->nombre_dependencia}}</option>
+                                                     @endforeach
                                                     </select>  
                                                 </div>
                                             </div>
                                         </div>
                                         
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <label for="nombres" class="col-red">Nombre Empleado:</label>
                                             <div class="form-group">
                                                 <div class="form-line">
@@ -50,24 +56,14 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-md-12">
+                                        <div class="col-md-6">
                                             <label for="apellidos">Apellido Empleado:</label>
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input class="form-control" name="apellidos" id="apellidos"></input>
+                                                    <input class="form-control" name="apellidos" id="apellidos">
                                                 </div>
                                             </div>        
                                         </div>
-
-                                        <div class="col-md-12">
-                                            <label for="estado">Estado:</label>
-                                            <div class="form-group">
-                                                <div class="form-line">
-                                                    <input class="form-control" name="estado" id="estado"></input>
-                                                </div>
-                                            </div>        
-                                        </div>
-
 
                                     <button type="button" id="btnupdate" class="btn bg-teal waves-effect">
                                         <i class="material-icons">create</i>
