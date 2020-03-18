@@ -16,7 +16,7 @@ class InventarioRequest extends FormRequest
     {
         return [
             'stock' => 'required|min:1',
-            'existencia' => 'nullable|min:1'
+            'descripcion' => 'required|min:3'
         ];
     }
 
@@ -24,7 +24,7 @@ class InventarioRequest extends FormRequest
     {
         return [
             'stock' => 'Stock',
-            'existencia' => 'Existencia'
+            'descripcion' => 'Nombre de Inventario'
         ];
     }
 }

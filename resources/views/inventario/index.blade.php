@@ -20,7 +20,7 @@
 					<h2 class="text-center font-bold col-deep-purple font-42">
 						LISTADO DE INVENTARIOS
 					</h2>
-					<a href="#crearInventario" data-toggle="modal"  class="btn btn-success waves-effect">
+					<a href="{{route('inventarios.create')}}" data-toggle="modal"  class="btn btn-success waves-effect">
                         <i class="material-icons">save</i>
                         <span>CREAR INVENTARIO</span>
                     </a>

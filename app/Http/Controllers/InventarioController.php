@@ -2,15 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\InventarioRequest;
 use App\Models\Inventario;
+use App\Repositories\InventarioRepository;
+use Illuminate\Http\Request;
 
 class InventarioController extends Controller
 {
-    public function __construct()
+    protected $repository;
+
+    public function __construct(InventarioRepository $repository)
     {
         $this->middleware('auth');
+        $this->repository = $repository;
     }
 
     public function index()
@@ -27,10 +31,12 @@ class InventarioController extends Controller
 
     public function store(InventarioRequest $request)
     {
-        if (request()->ajax())
-        {
-            Inventario::create($request->all());
-            return response()->json(['success' => 'INVENTARIO CREADO CON EXITO!']);
+        if (request()->ajax()) {
+            $exito = $this->repository->saveInventario($request);
+            if (!$exito) {
+                return response()->json(['warning' => 'ERROR AL GUARDAR DATOS!']);
+            }
+            return response()->json(['success' => 'INVENTARIO CREADO CON EXITO!', 'inventario' => $exito]);
         }
     }
 }

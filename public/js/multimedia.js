@@ -1,15 +1,21 @@
 $(function () {
-
     btnSave();
     showEdit();
     btnUpdate();
-   
+    btnSaveInventario();
 });
 
 const btnSave = () => {
     $('#btnsave').click(function (e) {
         e.preventDefault();
         save();
+    });
+}
+
+const btnSaveInventario = () => {
+    $('#btnsaveinventory').click(function (e) {
+        e.preventDefault();
+        saveInventario();
     });
 }
 
@@ -24,18 +30,15 @@ const showEdit = () => {
     $('#EditMultimedia').on('show.bs.modal', function (event) {
         let button = $(event.relatedTarget)
         let id = button.data('id')
-        let nombre = button.data('nombre_multimedia')
+        let nombre = button.data('nombre')
         let tipo = button.data('tipo')
         let serial = button.data('serial')
-        let estado = button.data('estado')
         let modal = $(this)
 
-        modal.find('.modal-body #id_dependencia').val(id);
+        modal.find('.modal-body #id_multimedia').val(id);
         modal.find('.modal-body #nombre_multimedia').val(nombre);
         modal.find('.modal-body #tipo').val(tipo);
         modal.find('.modal-body #serial').val(serial);
-        modal.find('.modal-body #estado').val(estado);
-
     });
 }
 
@@ -62,6 +65,41 @@ const save = () => {
             }
         }
     });
+
+}
+
+const saveInventario = () => {
+    let form = $('#form_create_inventory');
+    $.ajax({
+        data: form.serialize(),
+        url: form.attr('action'),
+        type: form.attr('method'),
+        dataType: 'json',
+        success: function (data) {
+            if (data.success) {
+                success(data.success);
+                $('#form_create_inventory')[0].reset();
+                changeSelect(data.inventario);
+            } else {
+                warning(data.warning);
+            }
+        },
+        error: function (data) {
+            if (data.status === 422) {
+                let errors = $.parseJSON(data.responseText);
+                addErrorMessage(errors);
+            }
+        }
+    });
+
+}
+
+const changeSelect = (inventario) => {
+    $('select[name="inventario_id"]').append(`<option value="${inventario.id}">${inventario.descripcion} - (Cantidad: ${inventario.stock})`);
+    $('select[name="inventario_id"]').val(inventario.id);
+
+    $('select[name="inventario_id"]').selectpicker("refresh");
+    $('select[name="inventario_id"]').selectpicker("render");
 
 }
 

@@ -21,7 +21,7 @@ Route::resource('equipos', 'EquipoController', ['except' => [
 ]]);
 
 Route::resource('inventarios', 'InventarioController', ['except' => [
-    'destroy', 'show', 'create', 'edit'
+    'destroy', 'show', 'edit'
 ]]);
 
 Route::resource('multimedias', 'MultimediaController', ['except' => [

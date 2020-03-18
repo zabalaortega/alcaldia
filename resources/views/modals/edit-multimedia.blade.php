@@ -19,38 +19,29 @@
 
                                         <input type="hidden" name="id_multimedia" id="id_multimedia">
 
-                                        <div class="col-md-12">
-                                            <label for="nombre_multimedia" class="col-red">Nombre:</label>
+                                        <div class="col-md-4">
+                                            <label for="nombre_multimedia">Nombre:</label>
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="text" class="form-control" name="nombre_multimedia">
+                                                    <input type="text" class="form-control" id="nombre_multimedia" name="nombre_multimedia">
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="col-md-12">
-                                            <label for="tipo" class="col-red">Tipo:</label>
+                                        <div class="col-md-4">
+                                            <label for="tipo">Tipo:</label>
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="text" class="form-control" name="tipo">
+                                                    <input type="text" class="form-control" id="tipo" name="tipo">
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="col-md-12">
+                                        <div class="col-md-4">
                                             <label for="serial" class="col-red">Serial:</label>
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input type="text" class="form-control" name="serial">
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-12">
-                                            <label for="estado" class="col-red">Esado:</label>
-                                            <div class="form-group">
-                                                <div class="form-line">
-                                                    <input type="text" class="form-control" name="estado">
+                                                    <input type="text" class="form-control" id="serial" name="serial">
                                                 </div>
                                             </div>
                                         </div>

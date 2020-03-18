@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Presenters\MultimediaPresenter;
 use Illuminate\Database\Eloquent\Model;
 
 class Multimedia extends Model
@@ -17,6 +18,31 @@ class Multimedia extends Model
     public function prestamos()
     {
         return $this->hasMany('App\Models\Prestamo');
+    }
+
+    public function inventarios()
+    {
+        return $this->belongsToMany('App\Models\Inventario')->withTimestamps();
+    }
+
+    public function setNombreMultimediaAttribute($value)
+    {
+        $this->attributes['nombre_multimedia'] = ucwords($value);
+    }
+
+    public function setSerialAttribute($value)
+    {
+        $this->attributes['serial'] = strtoupper($value);
+    }
+
+    public function setTipoAttribute($value)
+    {
+        $this->attributes['tipo'] = ucfirst($value);
+    }
+
+    public function present()
+    {
+        return new MultimediaPresenter($this);
     }
 
 }
