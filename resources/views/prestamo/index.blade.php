@@ -1,6 +1,6 @@
+
+
 @extends('layouts.main')
-
-
 @section('titulo', 'LISTADO DE PRESTAMOS')
 
 @section('extra-css')
@@ -20,14 +20,14 @@
 					<h2 class="text-center font-bold col-deep-purple font-42">
 						LISTADO DE PRESTAMOS
 					</h2>
-					<a href="#crearPrestamo" data-toggle="modal"  class="btn btn-success waves-effect">
+					<a href="{{ url('/prestamos/create') }}" data-toggle="modal"  class="btn btn-success waves-effect">
                         <i class="material-icons">save</i>
                         <span>CREAR PRESTAMO</span>
                     </a>
 				</div>
 				<div class="body">
 					<div class="table-responsive" id="id_table">
-						@include('tablas.tabla-prestamo')
+						@include('tablas.tabla-prestamos')
 					</div>
 				</div>
 			</div>
@@ -39,8 +39,6 @@
 <form id="form_hidden" style="display:none" action="{{route('prestamos.index')}}" method="GET"><input type="hidden" name="opcion" value="ok"></form>
 
 
-@include('modals.create-prestamo')
-@include('modals.edit-prestamo')
 	
 @stop
 

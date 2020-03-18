@@ -44,7 +44,7 @@
                 </a>
                 <ul class="ml-menu">
                     <li>
-                        <a href="javascript:void(0)">
+                        <a href="{{route('prestamos.index')}}">
                             <span>Modulo Prestamos</span>
                         </a>
                     </li>
@@ -72,6 +72,21 @@
                     <li>
                         <a href="{{route('empleados.index')}}">
                             <span>Modulo Empleado</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('equipos.index')}}">
+                            <span>Modulo Equipo</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('inventarios.index')}}">
+                            <span>Modulo Inventario</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('multimedias.index')}}">
+                            <span>Modulo Multimedia</span>
                         </a>
                     </li>
                 </ul>

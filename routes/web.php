@@ -27,3 +27,7 @@ Route::resource('inventarios', 'InventarioController', ['except' => [
 Route::resource('multimedias', 'MultimediaController', ['except' => [
     'destroy', 'show', 'create', 'edit'
 ]]);
+
+Route::resource('prestamos', 'PrestamoController', ['except' => [
+    'destroy', 'show', 'edit'
+]]);
