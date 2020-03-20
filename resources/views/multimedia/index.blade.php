@@ -20,9 +20,13 @@
 					<h2 class="text-center font-bold col-deep-purple font-42">
 						LISTADO DE MULTIMEDIAS
 					</h2>
-					<a href="#crearMultimedia" data-toggle="modal"  class="btn btn-success waves-effect">
+					<a href="#crearMultimedia" data-toggle="modal"  class="btn bg-light-green waves-effect">
                         <i class="material-icons">save</i>
                         <span>CREAR MULTIMEDIA</span>
+					</a>
+					<a href="#addStock" data-toggle="modal"  class="btn bg-cyan waves-effect">
+                        <i class="material-icons">cached</i>
+                        <span>AMPLIAR STOCK INVENTARIO</span>
                     </a>
 				</div>
 				<div class="body">
@@ -41,6 +45,8 @@
 
 @include('modals.create-multimedia')
 @include('modals.edit-multimedia')
+@include('modals.add-stock')
+
 	
 @stop
 

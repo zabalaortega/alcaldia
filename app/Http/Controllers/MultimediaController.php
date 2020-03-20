@@ -62,14 +62,20 @@ class MultimediaController extends Controller
         }
     }
 
-    public function changeStatus($id)
+    public function changeStatus($id, $status)
     {
         if (request()->ajax()) {
             $exito = $this->repository->changeStatus($id);
-            if (!$exito) {
+
+            if ($exito == 3) {
                 return response()->json(['warning' => 'ERROR AL ACTUALIZAR DATOS!']);
             }
-            return response()->json(['success' => 'MULTIMEDIA DADO DE BAJA!', 'status' => $exito->estado]);
+
+            if ($exito == 2) {
+                return response()->json(['warning' => 'INVENTARIO LLENO AMPLIE SU STOCK!']);
+            }
+
+            return response()->json(['success' => 'MULTIMEDIA HA CAMBIADO SU ESTADO!', 'status' => $status]);
         
         }
     }

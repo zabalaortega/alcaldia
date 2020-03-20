@@ -72,7 +72,7 @@ const changeStatus = (context) => {
 
     let button = context.id;
     let url = $('#' + button).data('href');
-
+   
     $.ajax({
         url: url,
         type: 'GET',
@@ -80,13 +80,7 @@ const changeStatus = (context) => {
         success: function (data) {
             if (data.success) {
                 success(data.success);
-                if (data.status) {
-                    hideButton(button);
-                    $('#btn-reject-' + tryIdButton(button)).show();
-                } else {
-                    hideButton(button);
-                    $('#btn-approve-' + tryIdButton(button)).show();
-                }
+                updateTable();                
             } else {
                 warning(data.warning);
             }
@@ -96,10 +90,6 @@ const changeStatus = (context) => {
 
 const hideButton = (button) => {
     $('#' + button).hide();
-}
-
-const tryIdButton = (button) => {
-    return button.split("-")[1];
 }
 
 const saveInventario = () => {

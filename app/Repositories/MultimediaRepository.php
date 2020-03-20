@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Inventario;
+use App\Models\InventarioMultimedia;
 use App\Models\Multimedia;
 use Illuminate\Support\Facades\DB;
 
@@ -20,12 +21,24 @@ class MultimediaRepository
 
     public function getCountStockInventario($id)
     {
-        return Inventario::where('id', $id)->withCount('multimediasCurrent')->first(['id', 'stock']);
+        return Inventario::where('id', $id)->withCount('multimediasCurrent')->first(['id', 'stock', 'existencia']);
     }
 
     public function getMultimediaWithCurrentInventario($id)
     {
         return Multimedia::where('id', $id)->with('stocks')->first(['id', 'estado']);
+    }
+
+    public function getMultimediaPivotInventario($multimedia, $inventario)
+    {
+        return InventarioMultimedia::where(['multimedia_id' => $multimedia, 'inventario_id' => $inventario])
+            ->orderBy('created_at', 'DESC')
+            ->first();
+    }
+
+    public function getInventario($id)
+    {
+        return Inventario::find($id);
     }
 
     public function saveMultimedia($request)
@@ -48,7 +61,10 @@ class MultimediaRepository
                 return 2;
             }
 
-            $multimedia->inventarios()->attach($request->inventario_id, ['descripcion' => 'Asignado a Inventario', 'estado' => 1]);
+            $multimedia->inventarios()->attach($request->inventario_id, ['descripcion' => 'Asignado', 'estado' => 1]);
+
+            $inventario = $this->getInventario($request->inventario_id);
+            $this->updateExistencia($inventario);
 
             DB::commit();
 
@@ -59,13 +75,22 @@ class MultimediaRepository
         }
     }
 
+    public function updateExistencia($inventario)
+    {
+        $inventario->existencia = $inventario->existencia + 1;
+        $inventario->update();
+    }
+
     public function checkExistencias($id)
     {
         $inventario = $this->getCountStockInventario($id);
 
-        if ($inventario->multimedias_current_count < $inventario->stock) {
-            return true;
+        if ($inventario->existencia < $inventario->stock) {
+            if ($inventario->multimedias_current_count < $inventario->stock) {
+                return true;
+            }
         }
+
         return false;
     }
 
@@ -85,21 +110,38 @@ class MultimediaRepository
 
         try {
             $multimedia = $this->getMultimediaWithCurrentInventario($id);
+            $inventario = $this->getInventario($multimedia->stocks->first()->inventario_id);
+
             $this->updateStatusMultimedia($multimedia);
-            $this->discountInventario($multimedia);
-            
+            $this->discountPivotInventario($multimedia->id, $inventario->id);
+
+            if ($multimedia->estado) {
+
+                $check = $this->checkExistencias($inventario->id);
+                if (!$check) {
+                    DB::rollback();
+                    return 2;
+                }
+
+                $this->addStatusPivotInventario($multimedia, $inventario->id);
+                $this->updateStock($inventario, $multimedia->estado);
+
+            } else {
+                $this->addStatusPivotInventario($multimedia, $inventario->id);
+                $this->updateStock($inventario, $multimedia->estado);
+            }
+
             DB::commit();
-            return $multimedia;
+            return 1;
 
         } catch (\Exception $ex) {
             DB::rollback();
-            return false;
+            return 3;
         }
     }
 
     public function updateStatusMultimedia($multimedia)
     {
-
         if ($multimedia->estado) {
             $multimedia->estado = 0;
         } else {
@@ -107,39 +149,34 @@ class MultimediaRepository
         }
 
         $multimedia->save();
-
+        
     }
 
-    public function discountInventario($multimedia)
+    public function discountPivotInventario($multimedia, $inventario)
     {
         // Por ahora no se tiene permitido cambiar de inventario
-        $inventario = Inventario::find($multimedia->stocks->first()->inventario_id);
+
+        $inventarioPivotMultimedia = $this->getMultimediaPivotInventario($multimedia, $inventario);
 
         // Lo optimo seria actualizar el stock actual
-        foreach ($multimedia->stocks as $stock) {
-            $multimedia->inventarios()->updateExistingPivot($stock->inventario_id, ['estado' => 0]);
-        }
-
-        $this->addStatusInventario($multimedia, $multimedia->status, $inventario->id);
-        $this->updateStock($inventario, $multimedia->estado);
-
+        $inventarioPivotMultimedia->update(['estado' => 0]);
     }
 
-    public function addStatusInventario($multimedia, $status, $inventario)
+    public function addStatusPivotInventario($multimedia, $inventario)
     {
-        if ($status) {
-            $multimedia->inventarios()->attach($inventario, ['descripcion' => 'Reactivado a Inventario', 'estado' => 1]);
+        if ($multimedia->estado) {
+            $multimedia->inventarios()->attach($inventario, ['descripcion' => 'Reactivado', 'estado' => 1]);
         } else {
-            $multimedia->inventarios()->attach($inventario, ['descripcion' => 'Dado de baja a Inventario', 'estado' => 0]);
+            $multimedia->inventarios()->attach($inventario, ['descripcion' => 'Baja', 'estado' => 0]);
         }
     }
 
     public function updateStock($inventario, $estado)
     {
         if ($estado) {
-            $inventario->stock = $inventario->stock + 1;
+            $inventario->existencia = $inventario->existencia + 1;
         } else {
-            $inventario->stock = $inventario->stock - 1;
+            $inventario->existencia = $inventario->existencia - 1;
         }
 
         $inventario->save();

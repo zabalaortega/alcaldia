@@ -10,7 +10,7 @@ class InventarioRepository
     public function saveInventario($request)
     {
         try {
-            $request['existencia'] = $request->stock;
+            $request['existencia'] = 0;
             $request['estado'] = 1;
             $inventario = Inventario::create($request->all());
             return $inventario;
