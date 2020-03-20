@@ -20,9 +20,19 @@ class Multimedia extends Model
         return $this->hasMany('App\Models\Prestamo');
     }
 
+    public function stocks()
+    {
+        return $this->hasMany('App\Models\InventarioMultimedia');
+    }
+
     public function inventarios()
     {
         return $this->belongsToMany('App\Models\Inventario')->withTimestamps();
+    }
+
+    public function inventarioCurrent()
+    {
+        return $this->belongsToMany('App\Models\Inventario')->wherePivot('estado', 1);
     }
 
     public function setNombreMultimediaAttribute($value)

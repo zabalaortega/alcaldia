@@ -27,3 +27,5 @@ Route::resource('inventarios', 'InventarioController', ['except' => [
 Route::resource('multimedias', 'MultimediaController', ['except' => [
     'destroy', 'show', 'create', 'edit'
 ]]);
+
+Route::get('multimedias/status/{id}', 'MultimediaController@changeStatus')->name('multimedias.change');

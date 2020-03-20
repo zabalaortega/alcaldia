@@ -68,6 +68,40 @@ const save = () => {
 
 }
 
+const changeStatus = (context) => {
+
+    let button = context.id;
+    let url = $('#' + button).data('href');
+
+    $.ajax({
+        url: url,
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            if (data.success) {
+                success(data.success);
+                if (data.status) {
+                    hideButton(button);
+                    $('#btn-reject-' + tryIdButton(button)).show();
+                } else {
+                    hideButton(button);
+                    $('#btn-approve-' + tryIdButton(button)).show();
+                }
+            } else {
+                warning(data.warning);
+            }
+        },
+    });
+}
+
+const hideButton = (button) => {
+    $('#' + button).hide();
+}
+
+const tryIdButton = (button) => {
+    return button.split("-")[1];
+}
+
 const saveInventario = () => {
     let form = $('#form_create_inventory');
     $.ajax({

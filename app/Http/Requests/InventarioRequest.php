@@ -15,7 +15,7 @@ class InventarioRequest extends FormRequest
     public function rules()
     {
         return [
-            'stock' => 'required|min:1',
+            'stock' => 'required|min:1|integer',
             'descripcion' => 'required|min:3'
         ];
     }

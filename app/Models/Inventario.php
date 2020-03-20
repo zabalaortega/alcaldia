@@ -17,4 +17,14 @@ class Inventario extends Model
         return $this->belongsToMany('App\Models\Multimedia');
     }
 
+    public function multimediasCurrent()
+    {
+        return $this->belongsToMany('App\Models\Multimedia')->wherePivot('estado', 1);
+    }
+
+    public function setDescripcionAttribute($value)
+    {
+        $this->attributes['descripcion'] = ucwords($value);
+    }
+
 }

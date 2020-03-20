@@ -19,6 +19,7 @@
 
                                         <input type="hidden" name="id_multimedia" id="id_multimedia">
 
+
                                         <div class="col-md-4">
                                             <label for="nombre_multimedia">Nombre:</label>
                                             <div class="form-group">
@@ -45,6 +46,8 @@
                                                 </div>
                                             </div>
                                         </div>
+
+                                       
 
                                     <button type="button" id="btnupdate" class="btn bg-teal waves-effect">
                                         <i class="material-icons">create</i>
