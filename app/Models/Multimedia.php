@@ -20,6 +20,13 @@ class Multimedia extends Model
         return $this->hasMany('App\Models\Prestamo');
     }
 
+    public function devueltos()
+    {
+        return $this->hasMany('App\Models\Prestamo')
+        ->where('estado', 1)
+        ->orderBy('created_at', 'DESC');
+    }
+
     public function stocks()
     {
         return $this->hasMany('App\Models\InventarioMultimedia');

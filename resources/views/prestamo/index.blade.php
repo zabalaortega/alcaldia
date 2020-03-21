@@ -27,7 +27,7 @@
 				</div>
 				<div class="body">
 					<div class="table-responsive" id="id_table">
-						@include('tablas.tabla-prestamo')
+						@include('tablas.tabla-prestamos')
 					</div>
 				</div>
 			</div>
@@ -37,6 +37,8 @@
 
 
 <form id="form_hidden" style="display:none" action="{{route('prestamos.index')}}" method="GET"><input type="hidden" name="opcion" value="ok"></form>
+<input id="list_empleados" type="hidden" value='@json($empleados)'>
+
 
 
 @include('modals.create-prestamo')
@@ -52,6 +54,11 @@
 <script src="{{asset('plugins/jquery-datatable/skin/bootstrap/js/dataTables.bootstrap.min.js')}}"></script>
 <script src="{{asset('plugins/sweetalert/sweetalert.min.js')}}"></script>
 <script src="{{asset('js/datatable.js')}}"></script>
+<script>
+	let empleados = $('#list_empleados').val();
+	empleados = JSON.parse(empleados);
+</script>
+
 <script src="{{asset('js/prestamo.js')}}"></script>
 
 @stop

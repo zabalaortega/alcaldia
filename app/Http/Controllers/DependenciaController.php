@@ -31,11 +31,10 @@ class DependenciaController extends Controller
     {
         if (request()->ajax()) {
             $exito = $this->repository->saveDependencia($request);
-            if ($exito) {
-                return response()->json(['success' => 'DEPENDENCIA CREADO CON EXITO!']);
-            } else {
+            if (!$exito) {
                 return response()->json(['warning' => 'ERROR AL GUARDAR DATOS!']);
             }
+            return response()->json(['success' => 'DEPENDENCIA CREADO CON EXITO!', 'dependencia' => $exito]);
         }
     }
 

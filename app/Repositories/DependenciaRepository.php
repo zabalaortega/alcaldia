@@ -14,8 +14,8 @@ class DependenciaRepository
     public function saveDependencia($request)
     {
         try {
-            Dependencia::create($request->all());
-            return true;
+            $dependencia = Dependencia::create($request->all());
+            return $dependencia;
         } catch (\Exception $ex) {
             return false;
         }

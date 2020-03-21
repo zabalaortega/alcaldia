@@ -21,8 +21,8 @@ class EmpleadoRepository
     {
         try {
             $request['estado'] = 1;
-            Empleado::create($request->all());
-            return true;
+            $empleado = Empleado::create($request->all());
+            return $empleado;
         } catch (\Exception $ex) {
             return false;
         }

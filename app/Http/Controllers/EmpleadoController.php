@@ -40,11 +40,10 @@ class EmpleadoController extends Controller
     {
         if (request()->ajax()) {
             $exito = $this->repository->saveEmpleado($request);
-            if ($exito) {
-                return response()->json(['success' => 'EMPLEADO CREADO CON EXITO!']);
-            } else {
+            if (!$exito) {
                 return response()->json(['warning' => 'ERROR AL GUARDAR DATOS!']);
             }
+            return response()->json(['success' => 'EMPLEADO CREADO CON EXITO!', 'empleado' => $exito]);
         }
     }
 

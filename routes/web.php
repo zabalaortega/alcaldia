@@ -20,13 +20,18 @@ Route::resource('equipos', 'EquipoController', ['except' => [
     'destroy', 'show', 'create', 'edit'
 ]]);
 
-Route::resource('inventarios', 'InventarioController', ['except' => [
-    'destroy', 'show', 'edit'
+Route::resource('inventarios', 'InventarioController', ['only' => [
+    'store'
 ]]);
 
 Route::resource('multimedias', 'MultimediaController', ['except' => [
     'destroy', 'show', 'create', 'edit'
 ]]);
+
+Route::resource('prestamos', 'PrestamoController', ['except' => [
+    'destroy', 'show', 'create', 'edit'
+]]);
+
 
 Route::get('multimedias/{id}/{status}', 'MultimediaController@changeStatus')->name('multimedias.change');
 Route::post('inventarios/stock', 'InventarioController@addSpaceStock')->name('inventarios.stock');

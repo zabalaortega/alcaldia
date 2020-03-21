@@ -20,6 +20,7 @@ class InventarioController extends Controller
 
     public function index()
     {
+        /*
         $inventarios = Inventario::all(['id', 'stock', 'existencia', 'estado']);
 
         if (request()->ajax()) {
@@ -28,6 +29,7 @@ class InventarioController extends Controller
         }
 
         return view('inventario.index', compact('inventarios'));
+        */
     }
 
     public function store(InventarioRequest $request)

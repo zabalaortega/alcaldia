@@ -127,6 +127,15 @@ const saveInventario = () => {
 
 }
 
+const changeSelect = (inventario) => {
+    $('select[name="inventario_id"]').append(`<option value="${inventario.id}">${inventario.descripcion} - (Cantidad: ${inventario.stock})`);
+    $('select[name="inventario_id"]').val(inventario.id);
+
+    $('select[name="inventario_id"]').selectpicker("refresh");
+    $('select[name="inventario_id"]').selectpicker("render");
+
+}
+
 const saveStock = () => {
     let form = $('#form_add_stock');
     $.ajax({
@@ -153,14 +162,6 @@ const saveStock = () => {
 
 }
 
-const changeSelect = (inventario) => {
-    $('select[name="inventario_id"]').append(`<option value="${inventario.id}">${inventario.descripcion} - (Cantidad: ${inventario.stock})`);
-    $('select[name="inventario_id"]').val(inventario.id);
-
-    $('select[name="inventario_id"]').selectpicker("refresh");
-    $('select[name="inventario_id"]').selectpicker("render");
-
-}
 
 const clearSelect = () => {
     $('select[name="inventario_id"]').val("");
