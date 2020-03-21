@@ -31,3 +31,5 @@ Route::resource('multimedias', 'MultimediaController', ['except' => [
 Route::resource('prestamos', 'PrestamoController', ['except' => [
     'destroy', 'show', 'edit'
 ]]);
+
+Route::get('email', 'EmailController@sendEmail');

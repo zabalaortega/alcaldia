@@ -8,6 +8,7 @@ use App\Models\Prestamo;
 use App\Models\Empleado;
 use App\Models\Multimedia;
 
+
 class PrestamoController extends Controller
 {
     public function __construct()
@@ -37,7 +38,6 @@ class PrestamoController extends Controller
 
     public function store(Request $request)
     {
-        
         Prestamo::create($request->all());
         return redirect('/prestamos');   
   
