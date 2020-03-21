@@ -20,7 +20,7 @@ class PrestamoRequest extends FormRequest
             'fecha_prestamo' => 'required|date',
             'fecha_devolucion' => 'required|date',
             'hora_prestamo' => 'required|date_format:H:i',
-            'hora_devolucion' => 'required|date_format:H:i|after:hora_prestamo',
+            'hora_devolucion' => 'required|date_format:H:i',
             'descripcion' => 'nullable|min:3',
         ];
     }

@@ -56,12 +56,24 @@ class PrestamoController extends Controller
 
     public function update(PrestamoRequest $request, $id)
     {
+        // if (request()->ajax()) {
+        //     $exito = $this->repository->updatePrestamo($request);
+        //     if ($exito) {
+        //         return response()->json(['success' => 'PRESTAMO ACTUALIZADO CON EXITO!']);
+        //     } else {
+        //         return response()->json(['warning' => 'ERROR AL ACTUALIZAR DATOS!']);
+        //     }
+        // }
+    }
+
+    public function devolverMultimedia($id)
+    {
         if (request()->ajax()) {
-            $exito = $this->repository->updatePrestamo($request);
+            $exito = $this->repository->devolverMultimedia($id);
             if ($exito) {
-                return response()->json(['success' => 'PRESTAMO ACTUALIZADO CON EXITO!']);
+                return response()->json(['success' => 'HERRAMIENTA/MULTIMEDIA DEVUELTA!']);
             } else {
-                return response()->json(['warning' => 'ERROR AL ACTUALIZAR DATOS!']);
+                return response()->json(['warning' => 'OOPS OCURRIO UN ERROR!']);
             }
         }
     }

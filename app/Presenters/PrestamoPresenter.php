@@ -44,7 +44,7 @@ class PrestamoPresenter extends Presenter
 
     public function hasPrestado()
     {
-        return new HtmlString("<button type='button' onclick='#'  data-href='#' class='btn bg-purple waves-effect btn-sm'><i class='material-icons'  data-toggle='tooltip' data-placement='top' data-original-title='DEVUELTO!'>low_priority</i></button>");
+        return new HtmlString("<button type='button' onclick='devolverMultimedia(this);' id='btndevolver-{$this->model->id}'  data-href='" . route('prestamos.devolver', $this->model->id) . "' class='btn bg-purple waves-effect btn-sm'><i class='material-icons'  data-toggle='tooltip' data-placement='top' data-original-title='DEVUELTO!'>low_priority</i></button>");
     }
 
 

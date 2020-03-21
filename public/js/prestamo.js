@@ -162,6 +162,25 @@ const save = () => {
 
 }
 
+const devolverMultimedia = (context) => {
+    let button = context.id;
+    let url = $('#' + button).data('href');
+
+    $.ajax({
+        url: url,
+        type: 'GET',
+        dataType: 'json',
+        success: function (data) {
+            if (data.success) {
+                success(data.success);
+                updateTable();
+            } else {
+                warning(data.warning);
+            }
+        },
+    });
+}
+
 const findEmpleado = (id) => {
 
     for (let empleado of empleados) {

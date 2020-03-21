@@ -34,4 +34,6 @@ Route::resource('prestamos', 'PrestamoController', ['except' => [
 
 
 Route::get('multimedias/{id}/{status}', 'MultimediaController@changeStatus')->name('multimedias.change');
+Route::get('prestamos/devolver/{id}', 'PrestamoController@devolverMultimedia')->name('prestamos.devolver');
+
 Route::post('inventarios/stock', 'InventarioController@addSpaceStock')->name('inventarios.stock');
