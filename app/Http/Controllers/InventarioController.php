@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\InventarioRequest;
+use App\Http\Requests\UpdateStockInventario;
 use App\Models\Inventario;
 use App\Repositories\InventarioRepository;
 use Illuminate\Http\Request;
@@ -38,5 +39,17 @@ class InventarioController extends Controller
             }
             return response()->json(['success' => 'INVENTARIO CREADO CON EXITO!', 'inventario' => $exito]);
         }
+    }
+
+    public function addSpaceStock(UpdateStockInventario $request)
+    {
+        if (request()->ajax()) {
+            $exito = $this->repository->saveUpdateStockInventario($request);
+            if (!$exito) {
+                return response()->json(['warning' => 'ERROR AL GUARDAR DATOS!']);
+            }
+            return response()->json(['success' => 'STOCK DE INVENTARIO AMPLIADO CON EXITO!']);
+        }
+
     }
 }

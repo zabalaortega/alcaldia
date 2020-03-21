@@ -31,14 +31,14 @@
                                     </div>
 
 
-                                        <div class="col-md-6">
-                                            <label for="stock">Cantidad A Sumar:</label>
-                                            <div class="form-group">
-                                                <div class="form-line">
-                                                    <input type="number" class="form-control" name="stock" placeholder="EJ: +1 espacio">
-                                                </div>
-                                            </div>        
-                                        </div>
+                                    <div class="col-md-6">
+                                        <label for="stock">Cantidad A Sumar:</label>
+                                        <div class="form-group">
+                                            <div class="form-line">
+                                                <input type="number" class="form-control" name="stock" placeholder="EJ: +1 espacio">
+                                            </div>
+                                        </div>        
+                                    </div>
 
 
                                     <button type="button" id="btnsavestock" class="btn bg-teal waves-effect">

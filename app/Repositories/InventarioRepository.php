@@ -6,7 +6,7 @@ use App\Models\Inventario;
 
 class InventarioRepository
 {
-    
+
     public function saveInventario($request)
     {
         try {
@@ -17,6 +17,19 @@ class InventarioRepository
         } catch (\Exception $ex) {
             return false;
         }
+    }
+
+    public function saveUpdateStockInventario($request)
+    {
+        try {
+            $inventario = Inventario::find($request->inventario_id);
+            $inventario->stock = $inventario->stock + $request->stock;
+            $inventario->save();
+            return true;
+        } catch (\Exception $ex) {
+            return false;
+        }
+
     }
 
 }

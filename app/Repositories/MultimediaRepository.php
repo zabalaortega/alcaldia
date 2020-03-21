@@ -155,7 +155,6 @@ class MultimediaRepository
     public function discountPivotInventario($multimedia, $inventario)
     {
         // Por ahora no se tiene permitido cambiar de inventario
-
         $inventarioPivotMultimedia = $this->getMultimediaPivotInventario($multimedia, $inventario);
 
         // Lo optimo seria actualizar el stock actual
