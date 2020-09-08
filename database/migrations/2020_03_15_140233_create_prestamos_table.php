@@ -10,25 +10,29 @@ class CreatePrestamosTable extends Migration
     public function up()
     {
         Schema::create('prestamos', function (Blueprint $table) {
+            
             $table->bigIncrements('id');
 
-            $table->bigInteger('empleado_id')->unsigned();
+            $table->bigInteger('user_id')->unsigned();
             $table->bigInteger('multimedia_id')->unsigned();
-            $table->text('descripcion')->nullable();
-            $table->dateTime('fecha_prestamo');
+
+            $table->text('descripcion');
+            $table->date('fecha_salida')->nullable();
+            $table->time('hora_salida')->nullable();
+
 
             $table->integer('estado');
 
-            $table->foreign('empleado_id')
+            $table->foreign('user_id')
                 ->references('id')
-                ->on('empleados')
-                ->onDelete('RESTRICT')
+                ->on('users')
+                ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
 
             $table->foreign('multimedia_id')
                 ->references('id')
                 ->on('multimedias')
-                ->onDelete('RESTRICT')
+                ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
 
             $table->timestamps();

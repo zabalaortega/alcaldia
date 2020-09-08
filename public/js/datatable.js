@@ -5,11 +5,17 @@ $(function () {
     showModalDetail();
 });
 
+function algo()
+{
+    
+
+}
 
 const dataTableInit = () => {
+    
     $('.js-basic-example').DataTable({
         responsive: true,
-        lengthMenu: [[20, 40, 60, -1], [20, 40, 60, "Todo"]],
+        lengthMenu: [[5, 10, 15, -1], [5, 10, 15, "Todo"]],
         ordering: true,
         language: {
             "sProcessing": "Procesando...",

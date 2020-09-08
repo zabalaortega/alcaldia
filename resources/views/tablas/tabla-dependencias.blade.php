@@ -22,8 +22,11 @@
             <td>{{$dependencia->present()->textName()}}</td>
             <td>{{$dependencia->present()->isDescripcion()}}</td>
             <td class="text-center">
-				<a href='#EditDependencia' data-toggle='modal' class='btn bg-indigo waves-effect btn-sm' data-id="{{$dependencia->id}}" data-nombre="{{$dependencia->nombre_dependencia}}" data-descripcion="{{$dependencia->descripcion}}">
-                    <i class="material-icons" data-toggle="tooltip" data-placement="top" data-original-title="Editar">create</i>
+				<a href='#EditDependencia' data-toggle='modal' class='btn bg-indigo waves-effect btn-sm'
+                 data-id="{{$dependencia->id}}" 
+                 data-nombre="{{$dependencia->nombre_dependencia}}" 
+                 data-descripcion="{{$dependencia->descripcion}}">
+                <i class="material-icons" data-toggle="tooltip" data-placement="top" data-original-title="Editar">create</i>
                 </a>
             </td>
         </tr>

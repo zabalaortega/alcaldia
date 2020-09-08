@@ -10,6 +10,7 @@ class CreatePrestamoProcesoTable extends Migration
     public function up()
     {
         Schema::create('prestamo_proceso', function (Blueprint $table) {
+           
             $table->bigIncrements('id');
 
             $table->bigInteger('proceso_id')->unsigned();
@@ -21,13 +22,13 @@ class CreatePrestamoProcesoTable extends Migration
             $table->foreign('proceso_id')
                 ->references('id')
                 ->on('procesos')
-                ->onDelete('RESTRICT')
+                ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
 
             $table->foreign('prestamo_id')
                 ->references('id')
                 ->on('prestamos')
-                ->onDelete('RESTRICT')
+                ->onDelete('CASCADE')
                 ->onUpdate('CASCADE');
 
             $table->timestamps();

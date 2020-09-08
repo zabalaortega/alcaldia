@@ -1,0 +1,38 @@
+.container{
+	margin: 50px;
+	height: 150px;
+	width: 90%;
+}
+body{
+	margin: 0px;
+	padding: 0px;
+	font-family: 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+	background: brown;
+}
+.clearfix{
+	clear: both;
+	float: none;
+}
+
+#logo{
+	width: 35%;
+	font-size: 30px;
+	float: left;
+	margin-top: 35px;
+}
+
+#logo img{
+	display: block;
+	float: left;
+	height: 80px;
+	margin-top: -9px;
+	margin-right: 12px;
+	padding: 5px;
+}
+
+#brand{
+	display: block;
+	margin: 0px;
+	text-align: center;
+
+}

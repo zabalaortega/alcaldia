@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 
-@section('titulo', 'LISTADO DE MULTIMEDIAS')
+@section('titulo', 'LISTADO DE EQUIPOS MULTIMEDIAS')
 
 @section('extra-css')
 <link href="{{asset('plugins/jquery-datatable/skin/bootstrap/css/dataTables.bootstrap.min.css')}}" rel="stylesheet">
@@ -18,13 +18,14 @@
 			<div class="card">
 				<div class="header">
 					<h2 class="text-center font-bold col-deep-purple font-42">
-						LISTADO DE MULTIMEDIAS
+						LISTADO DE EQUIPOS MULTIMEDIAS
 					</h2>
-					<a href="#crearMultimedia" data-toggle="modal"  class="btn btn-success waves-effect">
+					<a href="#crearMultimedia" data-toggle="modal"  class="btn bg-light-green waves-effect">
                         <i class="material-icons">save</i>
-                        <span>CREAR MULTIMEDIA</span>
-                    </a>
+                        <span>REGISTRAR MULTIMEDIA</span>
+					</a>
 				</div>
+				
 				<div class="body">
 					<div class="table-responsive" id="id_table">
 						@include('tablas.tabla-multimedias')
@@ -41,10 +42,9 @@
 
 @include('modals.create-multimedia')
 @include('modals.edit-multimedia')
+@include('modals.update-status')
 	
 @stop
-
-
 
 @section('extra-scripts')
 

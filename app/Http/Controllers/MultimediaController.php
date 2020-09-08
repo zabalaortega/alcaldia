@@ -2,23 +2,27 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Http\Requests\MultimediasRequest;
-use App\Models\Multimedia;
+use App\Http\Requests\ChangeStatusRequest;
+use Illuminate\Http\Request;
+use App\Repositories\MultimediaRepository;
 
 class MultimediaController extends Controller
 {
-    public function __construct()
+    protected $repository;
+
+    public function __construct(MultimediaRepository $repository)
     {
         $this->middleware('auth');
+        $this->repository = $repository;
     }
 
     public function index()
     {
-        $multimedias = Multimedia::all(['id', 'nombre_multimedia', 'tipo', 'serial', 'estado']);
+        $multimedias = $this->repository->getMultimedias();
 
         if (request()->ajax()) {
-            $multimedias = Multimedia::all(['id', 'nombre_multimedia', 'tipo', 'serial', 'estado']);
+            $multimedias = $this->repository->getMultimedias();
             return response()->view('tablas.tabla-multimedias', compact('multimedias'));
         }
 
@@ -27,10 +31,46 @@ class MultimediaController extends Controller
 
     public function store(MultimediasRequest $request)
     {
-        if (request()->ajax())
-        {
-            Multimedia::create($request->all());
-            return response()->json(['success' => 'EQUIPO MULTIMEDIA CREADO CON EXITO!']);
+        if (request()->ajax()) {
+
+            $exito = $this->repository->saveMultimedia($request);
+
+            if ($exito == 1) {
+                return response()->json(['success' => 'MULTIMEDIA CREADO CON EXITO!']);
+            }
+            return redirect()->route('multimedias.index');
+            /* if ($exito == 0) {
+                return response()->json(['warning' => 'ERROR AL GUARDAR DATOS!']);
+            } */
+
+            /* if ($exito == 2) {
+                return response()->json(['warning' => 'INVENTARIO LLENO AMPLIE SU STOCK!']);
+            } */
         }
     }
+
+    public function update(MultimediasRequest $request, $id)
+    {
+        if (request()->ajax()) {
+            $exito = $this->repository->updateMultimedia($request);
+            if ($exito) {
+                return response()->json(['success' => 'MULTIMEDIA ACTUALIZADO CON EXITO!']);
+            } else {
+                return response()->json(['warning' => 'ERROR AL ACTUALIZAR DATOS!']);
+            }
+        }
+    }
+
+    public function changeStatus(Request $request)
+    {
+        $exito = $this->repository->changeStatus($request);
+
+        if ($exito == 3) {
+            return response()->json(['warning' => 'ERROR AL ACTUALIZAR DATOS!']);
+        }
+
+        return redirect()->route('multimedias.index');
+    
+    }
+
 }

@@ -2,7 +2,6 @@
     <div class="modal-dialog modal-lg" role="document">
         <div class="modal-content">
             <div class="modal-body">
-
                 <div class="row clearfix">
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
@@ -15,9 +14,12 @@
                                     autocomplete="off">
 
                                     @csrf
-
+                                       <div class="col-md-6 form-grupo">
+                                         <p>Los Siguientes Campos son Obligatorios (*)</p>
+                                        </div>
+                                        <div class="clearfix"></div> 
                                         <div class="col-md-12">
-                                            <label for="nombre_dependencia" class="col-red">Dependencia:</label>
+                                            <label for="nombre_dependencia">Nombre Dependencia (*)</label>
                                             <div class="form-group">
                                                 <div class="form-line">
                                                     <input type="text" class="form-control" name="nombre_dependencia">
@@ -26,15 +28,13 @@
                                         </div>
 
                                         <div class="col-md-12">
-                                            <label for="descripcion">Descripcion:</label>
+                                            <label for="descripcion">Descripcion (*)</label>
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <textarea class="form-control"
-                                                        name="descripcion"></textarea>
+                                                    <input class="form-control" name="descripcion"></input>
                                                 </div>
                                             </div>        
                                         </div>
-
 
                                     <button type="button" id="btnsave" class="btn bg-teal waves-effect">
                                         <i class="material-icons">save</i>
@@ -42,12 +42,10 @@
                                     </button>
 
                                 </form>
-
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-link waves-effect" data-dismiss="modal">CERRAR</button>

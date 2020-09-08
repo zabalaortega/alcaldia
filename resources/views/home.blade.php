@@ -1,10 +1,9 @@
 @extends('layouts.main')
 
 
-@section('titulo', 'Bienvenidos')
+@section('titulo', 'Alcaldia Sincelejo')
 
 
 @section('content')
 
-<p>Sistema Alcaldia </p>
 @stop

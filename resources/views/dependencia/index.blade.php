@@ -22,7 +22,7 @@
 					</h2>
 					<a href="#crearDependencia" data-toggle="modal"  class="btn btn-success waves-effect">
                         <i class="material-icons">save</i>
-                        <span>CREAR DEPENDENCIA</span>
+                        <span>REGISTRAR DEPENDENCIA</span>
                     </a>
 				</div>
 				<div class="body">
@@ -43,8 +43,6 @@
 @include('modals.edit-dependencia')
 	
 @stop
-
-
 
 @section('extra-scripts')
 

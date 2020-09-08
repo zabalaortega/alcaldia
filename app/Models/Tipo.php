@@ -12,9 +12,9 @@ class Tipo extends Model
 
     protected $hidden = ['created_at', 'updated_at'];
 
-    public function empleados()
+    public function users()
     {
-        return $this->hasMany('App\Models\Empleado');
+        return $this->hasMany('App\User');
     }
 
 }

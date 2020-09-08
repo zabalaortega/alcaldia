@@ -27,6 +27,7 @@ const showEdit = () => {
         let nombre = button.data('nombre')
         let descripcion = button.data('descripcion')
         let modal = $(this)
+        
 
         modal.find('.modal-body #id_dependencia').val(id);
         modal.find('.modal-body #nombre_dependencia').val(nombre);

@@ -7,67 +7,82 @@
                     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="card">
                             <div class="header">
-                                <h2 class="text-center font-bold col-teal">ACTUALIZAR PRESTAMO</h2>
+                                <h2 class="text-center font-bold col-teal">ACTUALIZAR SOLICITUD DE EQUIPOS MULTIMEDIAS</h2>
                             </div>
                             <div class="body">
 
-                                <form id="form_edit" method="POST" action="{{ route('prestamos.update', 'prestamo') }}"
+                                <form id="form_edit" method="POST" action="{{ route('solicitud_equipos_multimedias.update', 'prestamo') }}"
                                     autocomplete="off">
 
                                     @csrf
                                     @method('PATCH')
 
-                                        <input type="hidden" name="id_prestamo" id="id_prestamo">
+                                    <input type="hidden" name="id_prestamo" id="id_prestamo">
 
-                                        <div class="col-md-12">
-                                            <label for="empleado_id" class="col-red">Empleado</label>
+                                    <div class="row">
+
+                                        <div class="col-md-12" id="showAlertEdit" style="display:none;">
+                                            <div class="alert alert-info">
+                                                <strong>Heads up!</strong> Multimedia Agotados
+                                            </div>
+                                        </div>
+                                    </div>    
+
+                                    <div class="row">
+
+                                        <div class="col-md-4">
+                                            <label for="usuario_id">Usuario</label>
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <select id="empleado_id" name="empleado_id" class="form-control">
-                                                     <option value=""></option>
-                                                    </select>  
+                                                    <select name="user_id" id="usuario_id"
+                                                        class="form-control show-tick">
+                                                        <option value="" >-- Escoja una opcion --
+                                                        </option>
+                                                        @foreach($usuarios as $usuario)
+                                                        <option value="{{$usuario->id}}"  >
+                                                            {{$usuario->nombre_completo}}
+                                                        </option>
+                                                        @endforeach
+                                                    </select>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="col-md-12">
-                                            <label for="multimedia_id" class="col-red">Multimedia</label>
+                                        <div class="col-md-4">
+                                            <label for="usuario_id">Multimedia Actual:</label>
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <select id="multimedia_id" name="multimedia_id" class="form-control">
-                                                     <option value=""></option>
-                                                    </select>  
-                                                </div>
-                                            </div>
-                                        </div>
-                                        
-                                        <div class="col-md-12">
-                                            <label for="fecha_entrada" class="col-red">Fecha Entrada:</label>
-                                            <div class="form-group">
-                                                <div class="form-line">
-                                                    <input type="text" class="form-control" name="fecha_entrada">
+                                                <input class="form-control" id="name_multimedia" disabled></input>
                                                 </div>
                                             </div>
                                         </div>
 
-                                        <div class="col-md-12">
-                                            <label for="descripcion">Descripcion:</label>
-                                            <div class="form-group">
-                                                <div class="form-line">
-                                                    <input class="form-control" name="descripcion"></input>
+                                        <div class="col-md-4" id="showMultimediaEdit">
+                                                <label for="multimedia_id">Multimedias (Disponibles) (*)</label>
+                                                <div class="form-group">
+                                                    <div class="form-line">
+                                                        <select name="multimedia_id" id="multimedia_id"
+                                                            class="form-control show-tick">
+                                                            <option value="">-- Escoja una opcion --
+                                                            </option>
+                                                        </select>
+                                                    </div>
                                                 </div>
-                                            </div>        
                                         </div>
 
                                         <div class="col-md-12">
-                                            <label for="estado">Estado:</label>
+                                            <label for="descripcion">Evento Utilzar</label>
                                             <div class="form-group">
                                                 <div class="form-line">
-                                                    <input class="form-control" name="estado"></input>
+                                                    <input class="form-control" name="observacion" id="observacion"></input>
                                                 </div>
-                                            </div>        
+                                            </div>
                                         </div>
 
+                                    </div>
+
+                                 
+                                    
                                     <button type="button" id="btnupdate" class="btn bg-teal waves-effect">
                                         <i class="material-icons">create</i>
                                         <span>ACTUALIZAR</span>

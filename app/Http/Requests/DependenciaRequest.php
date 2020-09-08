@@ -17,14 +17,14 @@ class DependenciaRequest extends FormRequest
     {
         return [
             'nombre_dependencia' => 'required|min:3|unique:dependencias,nombre_dependencia,'.$this->id_dependencia,
-            'descripcion' => 'nullable|min:3'
+            'descripcion' => 'required|min:3'
         ];
     }
 
     public function attributes()
     {
         return [
-            'nombre_dependencia' => 'Dependencia',
+            'nombre_dependencia' => 'Nombre Dependencia',
             'descripcion' => 'Descripcion',
         ];
     }

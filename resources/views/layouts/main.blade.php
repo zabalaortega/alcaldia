@@ -4,26 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1.0" name="viewport">
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>@yield('titulo')</title>
     <!-- Favicon-->
-    <link rel="icon" href="{{ asset('images/favicon.ico') }}" type="image/x-icon">
+    <link rel="icon" href="{{ asset('images/sucre.ico') }}" type="image/x-icon">
 
-    @section('css')
+    @section('css') 
 
     <!-- Google Fonts -->
-    
     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&subset=latin,cyrillic-ext" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" type="text/css">
-     
+
 
     <!-- all Css -->
     <link href="{{ asset('css/all.css') }}" rel="stylesheet">
 
     <!-- AdminBSB Themes. You can choose a theme from css/themes instead of get all themes -->
     <link href="{{ asset('css/themes/all-themes.min.css') }}" rel="stylesheet" />
+
+    
 
     @show
 
@@ -48,7 +49,7 @@
             <div class="navbar-header">
                 <a href="javascript:void(0);" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse" aria-expanded="false"></a>
                 <a href="javascript:void(0);" class="bars"></a>
-                <a class="navbar-brand" style="margin-left:35px;" href="{{route('home')}}">Plataforma Alcaldia</a>
+                <a class="navbar-brand" style="margin-left:35px;" href="{{route('home')}}">Alcaldia Sincelejo</a>
             </div>
             {{-- Call Search --}}
             {{-- FIN Call Search --}}

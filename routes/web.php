@@ -8,28 +8,29 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('dependencias', 'DependenciaController', ['except' => [
-    'destroy', 'show', 'create', 'edit'
-]]);
+//login
+Route::resource('register', 'RegisterController', ['except' => ['destroy', 'show', 'create', 'edit']]);
 
-Route::resource('empleados', 'EmpleadoController', ['except' => [
-    'destroy', 'show', 'create', 'edit'
-]]);
+//Dependencias
+Route::resource('dependencias', 'DependenciaController', ['except' => ['destroy', 'show', 'create', 'edit']]);
 
-Route::resource('equipos', 'EquipoController', ['except' => [
-    'destroy', 'show', 'create', 'edit'
-]]);
+//Multimedias
+Route::resource('multimedias', 'MultimediaController', ['except' => ['destroy', 'show', 'create', 'edit']]);
+Route::post('multimedias/change', 'MultimediaController@changeStatus')->name('multimedias.change');
 
-Route::resource('inventarios', 'InventarioController', ['except' => [
-    'destroy', 'show', 'create', 'edit'
-]]);
+//Solicitudes
+Route::resource('solicitud_equipos_multimedias', 'PrestamoController', ['except' => ['destroy', 'show', 'edit']]);
+Route::post('prestamos/change', 'PrestamoController@changeUpdate')->name('prestamos.update');
+Route::get('prestamos/devolver/{id}', 'PrestamoController@devolverMultimedia')->name('prestamos.devolver');
+Route::get('export/excel', 'PrestamoController@export')->name('export');
 
-Route::resource('multimedias', 'MultimediaController', ['except' => [
-    'destroy', 'show', 'create', 'edit'
-]]);
+//usuarios
+Route::resource('usuarios', 'UsuarioController', ['except' => ['destroy', 'show', 'create', 'edit']]);
 
-Route::resource('prestamos', 'PrestamoController', ['except' => [
-    'destroy', 'show', 'edit'
-]]);
 
-Route::get('email', 'EmailController@sendEmail');
+
+Route::get('multimedias/avaliable', 'PrestamoController@getMultimedias')->name('multimedias.avaliable');
+
+
+
+

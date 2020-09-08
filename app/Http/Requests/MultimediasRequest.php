@@ -16,16 +16,16 @@ class MultimediasRequest extends FormRequest
     {
         return [
             'nombre_multimedia' => 'required|min:3',
-            'tipo' => 'required|min:3',
-            'serial' => 'required|min:3'
+            'marca' => 'required|min:3',
+            'serial' => 'required|min:3|unique:multimedias,serial,'.$this->id_multimedia
         ];
     }
 
     public function attributes()
     {
         return [
-            'nombre_multimedia' => 'Nombre Multimedia',
-            'tipo' => 'Tipo',
+            'nombre_multimedia' => 'Marca',
+            'marca' => 'Modelo',
             'serial' => 'Serial'
         ];
     }

@@ -10,8 +10,6 @@
             <div class="btn-group user-helper-dropdown">
                 <i class="material-icons" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">keyboard_arrow_down</i>
                 <ul class="dropdown-menu pull-right">
-                    <li><a href="javascript:void(0);"><i class="material-icons">person</i>Perfil</a></li>
-                    <li role="separator" class="divider"></li>
                     <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();"><i class="material-icons">input</i>Cerrar Sesion</a>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -31,75 +29,51 @@
             <li>
                 <a href="{{route('home')}}">
                     <i class="material-icons">home</i>
-                    <span>Home</span>
+                    <span>Inicio</span>
                 </a>
             </li>
 
-            <li class="header">Gestion Prestamos - (Entradas)</li>
+            <li class="header">Solicitud - (Entradas)</li>
 
             <li>
-                <a href="javascript:void(0);" class="menu-toggle">
+                <a href="#" class="menu-toggle">
                     <i class="material-icons">input</i>
-                    <span>Prestamos - Entradas</span>
+                    <span>Solicitud - Entradas</span>
                 </a>
                 <ul class="ml-menu">
                     <li>
-                        <a href="{{route('prestamos.index')}}">
-                            <span>Modulo Prestamos</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="javascript:void(0)">
-                            <span>Modulo Entradas</span>
+                    <a href="{{route('solicitud_equipos_multimedias.index')}}">
+                            <span>Solicitud De Equipos Multimedias</span>
                         </a>
                     </li>
                 </ul>
             </li>
-       
-            <li class="header">Gestion Parametros</li>
-
+                  
+           <li>
+                <a href="{{route('multimedias.index')}}">
+                    <i class="material-icons">laptop</i>
+                    <span>Modulo Herramienta - Multimedias</span>
+                </a>
+            </li>
             <li>
-                <a href="javascript:void(0);" class="menu-toggle">
-                    <i class="material-icons">settings</i>
-                    <span>Parametros</span>
+                <a href="{{route('dependencias.index')}}">
+                    <i class="material-icons">domain</i>
+                    <span>Modulo Dependencia</span>
                 </a>
-                <ul class="ml-menu">
-                    <li>
-                        <a href="{{route('dependencias.index')}}">
-                            <span>Modulo Dependencia</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{route('empleados.index')}}">
-                            <span>Modulo Empleado</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{route('equipos.index')}}">
-                            <span>Modulo Equipo</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{route('inventarios.index')}}">
-                            <span>Modulo Inventario</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{route('multimedias.index')}}">
-                            <span>Modulo Multimedia</span>
-                        </a>
-                    </li>
-                </ul>
             </li>
-            
-
+           {{-- <li>
+                <a href="{{route('usuarios.index')}}">
+                    <span>Modulo Usuarios</span>
+                </a>
+            </li> --}}
+    
         </ul>
     </div>
     <!-- #Menu -->
     <!-- Footer -->
     <div class="legal">
         <div class="copyright">
-            &copy; 2020 <a href="javascript:void(0);">Plataforma - Alcaldia</a>.
+            &copy; 2020 <a href="javascript:void(0);">Alcaldia - Sincelejo </a>.
         </div>
         <div class="version">
             <b>Version: </b> 1.0.0

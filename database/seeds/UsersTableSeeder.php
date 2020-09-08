@@ -9,10 +9,16 @@ class UsersTableSeeder extends Seeder
 
     public function run()
     {
-        User::create([
+        $admin = User::create([
             'name' => 'Administrador',
             'email' => 'admin@admin.com',
             'password' => Hash::make('secret'),
+            'apellidos' => 'Administrador',
+            'tipo_id' => '1',
+            'dependencia_id' => '1',
+            'estado' => 1,
         ]);
+
+        $admin->assignRole('admin');
     }
 }
